@@ -12,7 +12,12 @@ function Login() {
     if (event === 'SIGNED_IN') {
       // ENCAMINHA PARA TELA DE SUCESSO
       navigate('/success');
+      //VAI MUDAR PARA O SITE DEPOIS DE 5SEG
+      setTimeout(() => {
+        window.location.href = "https://green-dump.vercel.app/produtos/produto.html";
+      }, 5000);
     }
+    
     else {
       // ENCAMINHA PARA TELA DE LOGIN
       navigate('/');

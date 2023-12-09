@@ -36,7 +36,7 @@ async function signOut(){
       <header className="App-header">
         {Object.keys(user).length !==0 ?
            <>
-            <h1>Success</h1>
+            <h1>SUCESSO</h1>
             <button onClick={signOut}>Sair</button>
            </>
         :
