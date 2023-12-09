@@ -37,6 +37,7 @@ async function signOut(){
     <div className="App">
       <header className="App-header">
         <h1>Success</h1>
+        <button onClick={signOut}>Sair</button>
       </header>
     </div>
   );
