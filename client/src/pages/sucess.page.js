@@ -37,6 +37,14 @@ async function signOut(){
         {Object.keys(user).length !==0 ?
            <>
             <h1>SUCESSO</h1>
+            <svg width="50" height="50" viewBox="0 0 50 50">
+  <circle cx="25" cy="25" r="20" fill="none" stroke="green" stroke-width="5">
+    <animate attributeName="stroke-dasharray" values="1,150;100,150;1,150" dur="1.5s" repeatCount="indefinite" />
+    <animate attributeName="stroke-dashoffset" values="0;-30;-60" dur="1.5s" repeatCount="indefinite" />
+  </circle>
+</svg>
+
+
             <button onClick={signOut}>Sair</button>
            </>
         :

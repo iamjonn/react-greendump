@@ -19,7 +19,7 @@ html {
 }
 
 .App-header {
-  height:50vh;
+  height:60vh;
   width:30%;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 15px;
@@ -36,3 +36,26 @@ html {
   color: #61dafb;
 }
 
+.txtcmc{
+  font-size: 30px;
+}
+
+h1{
+  color:black;
+}
+
+.bemvindo {
+  font-family: 'Mooli', sans-serif;
+  color:rgb(13, 39, 13) ;
+}
+.green {
+  color:#106210;
+  font-family: 'Lilita One', cursive;
+  text-shadow: 2px 2px 2px black;
+}
+
+.dump {
+  color: rgb(119, 190, 72);
+  font-family: 'Lilita One', sans-serif;
+  text-shadow: 2px 2px 2px black;
+}

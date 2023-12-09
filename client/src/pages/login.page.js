@@ -25,13 +25,15 @@ function Login() {
   })
 
   return (
+    
     <div className='body'>
     <div className="App">
       <header className="App-header">
+      <h1 className='txtcmc'><span class="bemvindo">Bem-vindo(a) ao </span><span class="green">Green</span><span class="dump">Dump</span></h1>
           <Auth
             supabaseClient={supabase}
             appearance={{theme: ThemeSupa}}
-            theme="dark"
+            theme=""
             providers={["discord"]}
           />
       </header>
