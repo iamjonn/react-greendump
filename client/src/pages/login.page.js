@@ -25,6 +25,7 @@ function Login() {
   })
 
   return (
+    <div className='body'>
     <div className="App">
       <header className="App-header">
           <Auth
@@ -34,7 +35,7 @@ function Login() {
             providers={["discord"]}
           />
       </header>
-    </div>
+    </div></div>
   );
 }
 
