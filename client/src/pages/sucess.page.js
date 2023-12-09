@@ -1,6 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
-import { Auth } from '@supabase/auth-ui-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { useNavigate } from 'react-router-dom'; 
 import React, {useEffect, useState} from 'react';
 
@@ -15,7 +13,7 @@ const navigate = useNavigate();
 useEffect(() => {
   async function getuserData(){
     await supabase.auth.getUser().then((value) => {
-      //value.data.user
+      //verifica existe usuario
       if(value.data?.user){
         console.log(value.data.user);
         setUser(value.data.user);
@@ -36,8 +34,18 @@ async function signOut(){
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Success</h1>
-        <button onClick={signOut}>Sair</button>
+        {Object.keys(user).length !==0 ?
+           <>
+            <h1>Success</h1>
+            <button onClick={signOut}>Sair</button>
+           </>
+        :
+        <>
+            <h1>Usuario nao esta logado</h1>
+            <button onClick={() => {navigate("/")}}>Voltar Para Tela principal</button>
+           </>
+
+        }
       </header>
     </div>
   );
