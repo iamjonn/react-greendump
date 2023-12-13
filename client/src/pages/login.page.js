@@ -14,7 +14,7 @@ function Login() {
       navigate('/success');
       //VAI MUDAR PARA O SITE DEPOIS DE 5SEG
       setTimeout(() => {
-        window.location.href = "https://green-dump.vercel.app/produtos/produto.html";
+        navigate('/produtos');
       }, 5000);
     }
     
