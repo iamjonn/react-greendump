@@ -11,7 +11,7 @@ function Login() {
   supabase.auth.onAuthStateChange(async (event) => {
     if (event === 'SIGNED_IN') {
       // ENCAMINHA PARA TELA DE SUCESSO
-      navigate('/success');
+      navigate('/produtos');
       //VAI MUDAR PARA O SITE DEPOIS DE 5SEG
       setTimeout(() => {
         navigate('/produtos');
