@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import styles from './Produtos.module.css'
 
-
 const supabaseUrl = 'https://ivaedbdscbtmcnibbgis.supabase.co'
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2YWVkYmRzY2J0bWNuaWJiZ2lzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMjQ0MzcwOSwiZXhwIjoyMDE4MDE5NzA5fQ.0a1sjZXfCZDaZbntD05c_Jo175caVGcfGuIixU2-LKE'
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
@@ -10,30 +9,44 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey)
 function Produtos() {
   const [produtos, setProdutos] = useState([])
   const [produto, setProduto] = useState('')
-  const [produtoFiltrado, setProdutoFiltrado] = useState([]) // novo estado para o produto filtrado
+  const [produtoFiltrado, setProdutoFiltrado] = useState([])
 
   useEffect(() => {
-    fetchProdutos()
+    buscarProdutos()
   }, [])
 
-  async function fetchProdutos() {
+  async function buscarProdutos() {
     const { data, error } = await supabase.from('descartes').select('*')
     if (error) console.error('Erro ao buscar produtos', error)
     else 
-    console.log(data) // adiciona esta linha
+    console.log(data)
     setProdutos(data)
   }
 
-  function handleSearch() {
+  function lidarComBusca() {
     const produtoFiltrado = produtos.filter(
       (p) => p.produto.toLowerCase() === produto.toLowerCase()
     )
     if (produtoFiltrado.length === 0) {
       alert('Nenhum produto encontrado')
     } else {
-      setProdutoFiltrado(produtoFiltrado) // atualiza o produto filtrado
+      setProdutoFiltrado(produtoFiltrado)
     }
   }
+
+  function lidarComMudancaDeEntrada(event) {
+    const { value } = event.target;
+    const regex = /^[a-zA-Z0-9\s]{0,20}$/;
+    const hasLetter = /[a-zA-Z]/.test(value);
+  
+    if (value === '' || (regex.test(value) && hasLetter)) {
+      setProduto(value);
+    } else {
+      alert("Por favor, insira uma combinação de letras e números. Limite de 20 caracteres.");
+    }
+  }
+  
+
  
   return (
     <div className={styles.container}>
@@ -49,10 +62,10 @@ function Produtos() {
         type="text"
         placeholder="Pesquise o produto desejado"
         value={produto}
-        onChange={(e) => setProduto(e.target.value)}
+        onChange={lidarComMudancaDeEntrada}
         className={styles.input}
       />
-      <button id="lupa" onClick={handleSearch} className={styles.button}>
+      <button id="lupa" onClick={lidarComBusca} className={styles.button}>
         Buscar
       </button></div>
       <div className={styles.cardsContainer}>
@@ -78,9 +91,6 @@ function Produtos() {
     </div>
     </div>
   )
-  
-  
-  
 }
 
 export default Produtos
