@@ -25,7 +25,7 @@ useEffect(() => {
 },[]);
 
 async function signOut(){
-  const {error} = await supabase.auth.signOut();
+  //const {error} = await supabase.auth.signOut();
   navigate('/');
 } 
 
